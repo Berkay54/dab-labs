@@ -1,0 +1,228 @@
+﻿.opening {
+  max-width: 2200px;
+  margin: auto;
+  padding: 0 4.2vw;
+  min-height: 100svh;
+  overflow: clip;
+}
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 10;
+  background: #272823;
+  color: white;
+  padding: 12px;
+  transform: translateY(-160%);
+}
+.skip-link:focus { transform: translateY(0); }
+.navigation {
+  height: 116px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  position: relative;
+  z-index: 3;
+  animation: enter .8s both;
+}
+.wordmark {
+  width: 165px;
+  flex-shrink: 0;
+  display: block;
+}
+.wordmark img { display: block; width: 100%; height: auto; object-fit: contain; }
+.wordmark:focus-visible { outline-offset: 5px; }
+.navigation nav { display: flex; gap: 32px; align-items: center; font-size: 12px; }
+.navigation nav a { position: relative; padding: 12px 0; }
+.navigation nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .3s;
+}
+.navigation nav a:hover::after { transform: scaleX(1); }
+.navigation nav a:last-child { margin-left: 22px; }
+.navigation nav a span { margin-left: 8px; }
+.hero {
+  position: relative;
+  min-height: calc(100svh - 116px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  isolation: isolate;
+}
+/* Keep the form oversized, with breathing room at the right viewport edge. */
+.hero-art {
+  position: absolute;
+  top: 0;
+  bottom: 58px;
+  left: 28%;
+  right: -1%;
+  isolation: isolate;
+}
+.backdrop {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(170px, 23vw, 400px);
+  font-weight: 550;
+  letter-spacing: -.085em;
+  padding-right: .08em;
+  color: #d2cec2;
+  user-select: none;
+  animation: enter 1.2s .2s both;
+}
+.sculpture { position: absolute; inset: 0; overflow: hidden; }
+.sculpture img, .sculpture canvas {
+  position: absolute;
+  pointer-events: none;
+  /* Feather each layer's own bounds, including the inset static image.
+     The opaque centre preserves the metallic detail; the DAB backdrop is unmasked. */
+  -webkit-mask-image:
+    linear-gradient(to right, transparent, #000 14%, #000 86%, transparent),
+    linear-gradient(to bottom, transparent, #000 22%, #000 78%, transparent);
+  mask-image:
+    linear-gradient(to right, transparent, #000 14%, #000 86%, transparent),
+    linear-gradient(to bottom, transparent, #000 22%, #000 78%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+.sculpture canvas { inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity .65s; }
+.sculpture img {
+  object-fit: fill;
+  /* Lift the source's flat stone ground above the page, then let darken
+     discard it instead of multiplying it into a visible grey rectangle. */
+  filter: brightness(1.025);
+  mix-blend-mode: darken;
+  transition: opacity .65s;
+}
+.sculpture[data-gl=on] canvas { opacity: 1; }
+.sculpture[data-gl=on] img { opacity: 0; }
+.sculpture[data-gl=off] canvas { opacity: 0; }
+.hero-copy {
+  position: relative;
+  z-index: 2;
+  width: 42%;
+  padding: 50px 0 135px;
+  pointer-events: none;
+}
+.hero-eyebrow {
+  margin: 0 0 37px;
+  font-size: 10px;
+  line-height: 1.6;
+  letter-spacing: .095em;
+  color: #63645b;
+  animation: enter .8s .1s both;
+}
+h1 {
+  margin: 0;
+  font-size: clamp(42px, 4.1vw, 66px);
+  font-weight: 450;
+  line-height: 1.12;
+  letter-spacing: -.052em;
+  animation: enter .9s .18s both;
+}
+h1 span { display: block; }
+h1 .serif {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -.027em;
+  font-size: 1.12em;
+  line-height: 1.08;
+}
+.hero-aside { margin-top: 29px; animation: enter 1s .28s both; }
+.hero-aside p {
+  max-width: 285px;
+  font-size: 14px;
+  line-height: 1.8;
+  margin: 0 0 37px;
+  color: #63645b;
+  letter-spacing: -.015em;
+  text-wrap: pretty;
+}
+.explore {
+  pointer-events: auto;
+  position: relative;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 205px;
+  padding: 0 0 14px;
+}
+.explore::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #99988d;
+  transform: scaleX(.86);
+  transform-origin: left;
+  transition: transform .3s;
+}
+.arrow { font-size: 22px; line-height: 1; transition: transform .3s; }
+.explore:hover::after { transform: scaleX(1); }
+.explore:hover .arrow { transform: translate(3px, 3px); }
+.hero-meta {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid #d2d1c8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 58px;
+  font-size: 9px;
+  color: #6d6e63;
+  letter-spacing: .085em;
+  animation: enter 1s .4s both;
+}
+@keyframes enter {
+  from { opacity: 0; translate: 0 7px; }
+  to { opacity: 1; translate: 0 0; }
+}
+@media (min-width: 1600px) {
+  .hero-copy { padding-bottom: 160px; }
+  .hero-aside p { font-size: 15px; max-width: 310px; }
+}
+@media (max-width: 1000px) and (min-width: 701px) {
+  .navigation nav { gap: 22px; }
+  .navigation nav a:last-child { margin-left: 0; }
+  .hero-copy { width: 47%; }
+  h1 { font-size: clamp(37px, 4.65vw, 46px); }
+  .hero-art { left: 32%; right: -10%; }
+}
+@media (max-width: 700px) {
+  .opening { padding: 0 6vw; }
+  .navigation { height: 114px; gap: 15px; align-items: flex-start; padding-top: 23px; }
+  .wordmark { width: 114px; }
+  .navigation nav { gap: 0 18px; flex-wrap: wrap; justify-content: flex-end; max-width: 290px; font-size: 11px; }
+  .navigation nav a { padding: 5px 0 10px; }
+  .navigation nav a:last-child { margin-left: 0; }
+  .navigation nav a span { margin-left: 3px; }
+  .hero { min-height: calc(100svh - 114px); justify-content: flex-start; }
+  .hero-copy { width: 100%; padding: 28px 0 0; }
+  .hero-eyebrow { font-size: 9px; margin-bottom: 24px; }
+  h1 { font-size: clamp(39px, 8.7vw, 57px); }
+  .hero-aside { margin-top: 22px; }
+  .hero-aside p { max-width: 270px; font-size: 13px; margin-bottom: 24px; }
+  .explore { font-size: 12px; width: 185px; padding-bottom: 12px; }
+  .hero-art { position: relative; order: 1; inset: auto; width: 100%; height: 41svh; min-height: 290px; max-height: 450px; margin-top: 8px; }
+  .backdrop { font-size: 40vw; }
+  .hero-meta { position: relative; order: 2; margin-top: auto; min-height: 55px; font-size: 8px; letter-spacing: .045em; gap: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
