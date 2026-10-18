@@ -1,0 +1,71 @@
+﻿.fw-gallery { --fw-muted: #63645b; --fw-rule: #d2d1c8; --fw-blue: #3e648a; --fw-wheel-size: clamp(300px, 28vw, 390px); --fw-thumb-width: clamp(90px, 8vw, 110px); position: relative; }
+.fw-layout { display: grid; grid-template-columns: minmax(0, .42fr) minmax(0, .58fr); gap: clamp(32px, 5vw, 80px); align-items: center; max-width: 1280px; min-height: 660px; margin-inline: auto; padding: 30px 0; }
+.fw-wheel-column { min-width: 0; }
+.fw-stage { position: relative; width: 100%; max-width: 520px; margin-inline: auto; padding-bottom: 24px; touch-action: pan-y; user-select: none; cursor: grab; }
+.fw-stage:active { cursor: grabbing; }
+.fw-stage-square { position: relative; width: 100%; aspect-ratio: 1; }
+.fw-wheel { position: absolute; left: calc(50% - var(--fw-wheel-size) / 2); top: calc(50% - var(--fw-wheel-size) / 2 - 15px); width: var(--fw-wheel-size); height: var(--fw-wheel-size); border: 1px solid #c9c6bb; border-radius: 50%; }
+.fw-inner-rim { position: absolute; inset: 6%; border: 1px solid #ddd9cf; border-radius: 50%; pointer-events: none; }
+.fw-rim-marker { position: absolute; width: 3px; height: 3px; transform: translate(-50%, -50%); border-radius: 50%; background: #979b94; pointer-events: none; }
+.fw-spoke { position: absolute; left: 50%; top: 50%; width: 50%; height: 1px; background: #d8d4ca; transform-origin: left; pointer-events: none; }
+.fw-support { position: absolute; inset: 0; width: 100%; height: 100%; color: #b1afa3; pointer-events: none; }
+.fw-on-view { position: absolute; top: -12px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 9px; letter-spacing: .15em; color: var(--fw-muted); }
+.fw-on-view span { font-size: 13px; }
+.fw-hub { position: absolute; left: 50%; top: calc(50% - 15px); transform: translate(-50%, -50%); width: 72px; height: 72px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; border: 1px solid #b1afa3; border-radius: 50%; background: #eeede8; pointer-events: none; }
+.fw-hub span:first-child { font-size: 18px; font-variant-numeric: tabular-nums; }
+.fw-hub span:last-child { font-size: 8px; letter-spacing: .12em; color: var(--fw-muted); }
+.fw-gondola-anchor { position: absolute; width: var(--fw-thumb-width); }
+.fw-counter { position: relative; transform-origin: top left; }
+.fw-gondola-offset { position: absolute; left: 0; top: 0; width: 100%; transform: translateX(-50%); }
+.fw-pendulum { position: relative; transform-origin: top; }
+.fw-hanger { display: block; margin: auto; width: 1px; height: 12px; background: #b1afa3; }
+.fw-gondola { position: relative; display: block; width: 100%; padding: 3px; border: 1px solid #c9c6bb; border-radius: 2px; background: #eeede8; color: #272823; cursor: pointer; font: inherit; transform-origin: top center; }
+.fw-gondola[aria-current=true] { border-color: var(--fw-blue); }
+.fw-thumbnail { position: relative; display: block; width: 100%; aspect-ratio: 16 / 10; overflow: hidden; background: #e6e4dc; }
+.fw-thumbnail-label { display: block; padding: 7px 0 3px; text-align: center; font-size: 7px; line-height: 1; letter-spacing: .04em; }
+.fw-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center; pointer-events: none; transition: opacity 500ms ease; }
+.fw-photo[data-photo-state=loading] { opacity: 0; }
+.fw-photo-skeleton { position: absolute; inset: 0; background: #e6e4dc; }
+.fw-photo-error { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 12px; background: #e6e4dc; color: var(--fw-muted); font-size: 11px; }
+.fw-detail-panel { width: clamp(360px, 36vw, 520px); max-width: 100%; justify-self: end; min-width: 0; }
+.fw-detail-preview { position: relative; width: 100%; aspect-ratio: 16 / 10; overflow: hidden; margin: 0; background: #e6e4dc; }
+.fw-detail-photo { position: absolute; inset: 0; }
+.fw-project-info { margin-top: 21px; }
+.fw-project-index { margin: 0 0 13px; padding-left: 9px; border-left: 2px solid var(--fw-blue); font-size: 9px; line-height: 1.4; letter-spacing: .06em; color: var(--fw-blue); }
+.fw-project-index span { color: var(--fw-muted); }
+.fw-project-info h3 { margin: 0; font-size: 30px; font-weight: 500; line-height: 1.1; letter-spacing: -.045em; }
+.fw-project-category { margin: 10px 0 0; font-size: 11px; line-height: 1.8; color: var(--fw-muted); }
+.fw-project-year { margin: 5px 0 0; font-size: 9px; color: var(--fw-muted); }
+.fw-project-description { max-width: 390px; margin: 13px 0 0; font-size: 12px; line-height: 1.75; color: var(--fw-muted); text-wrap: pretty; }
+.fw-project-link { display: flex; justify-content: space-between; align-items: center; width: 175px; margin-top: 14px; padding-bottom: 8px; border-bottom: 1px solid #99988d; font-size: 11px; }
+.fw-project-link span { font-size: 19px; }
+.fw-project-pending { font-size: 10px; color: var(--fw-muted); margin: 14px 0 0; }
+.fw-controls { display: flex; align-items: center; gap: 9px; margin-top: 22px; }
+.fw-controls button { appearance: none; width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #b8b9ae; border-radius: 50%; background: transparent; color: #272823; font-size: 19px; cursor: pointer; }
+.fw-controls button[data-next] { background: #272823; border-color: #272823; color: #eeede8; }
+.fw-controls button:disabled { opacity: .4; cursor: default; }
+.fw-control-count { margin-left: auto; font-size: 9px; color: var(--fw-muted); font-variant-numeric: tabular-nums; }
+.fw-help { text-align: center; margin: 12px 0 0; font-size: 9px; line-height: 1.7; color: var(--fw-muted); pointer-events: none; }
+.fw-help span { padding: 0 8px; color: #99988d; }
+.fw-gallery button:focus-visible, .fw-gallery a:focus-visible, .fw-stage:focus-visible { outline: 2px solid var(--fw-blue); outline-offset: 5px; }
+.fw-stage:focus-visible { outline-offset: -3px; }
+.fw-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (hover: hover) and (pointer: fine) { .fw-controls button:hover { border-color: var(--fw-blue); } }
+@media (max-width: 900px) {
+  .fw-gallery { --fw-wheel-size: 70%; --fw-thumb-width: clamp(68px, 18vw, 100px); }
+  .fw-layout { grid-template-columns: minmax(0, 1fr); gap: 35px; min-height: 0; padding: 45px 0 15px; }
+  .fw-stage { max-width: 420px; }
+  .fw-detail-panel { width: min(100%, 520px); justify-self: center; }
+}
+@media (max-width: 700px) {
+  .fw-layout { padding-top: 35px; gap: 30px; }
+  .fw-stage { max-width: 360px; }
+  .fw-hub { width: 60px; height: 60px; }
+  .fw-hub span:first-child { font-size: 16px; }
+  .fw-hub span:last-child { font-size: 7px; }
+  .fw-on-view { font-size: 8px; }
+  .fw-thumbnail-label { font-size: 6px; }
+  .fw-help { font-size: 8px; }
+  .fw-project-info h3 { font-size: 28px; }
+}
+@media (prefers-reduced-motion: reduce) { .fw-gallery *, .fw-gallery *::before { transition: none !important; animation: none !important; } }
