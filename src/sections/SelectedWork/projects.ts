@@ -16,7 +16,6 @@ export const projects: FerrisWheelItem[] = [
     { id: 'veron', title: 'VERON', category: 'Web Sitesi', discipline: 'Lüks Saat', accent: '#5a5e5a', thumbnailPosition: 'left center', src: '/projects/veron/veron-showcase.png', alt: 'VERON web sitesi: koyu zemin üzerinde mekanik saat ve editorial başlık kompozisyonu.' },
     { id: 'veyra', title: 'VEYRA', category: 'Web Sitesi', discipline: 'Eyewear', accent: '#918475', thumbnailPosition: 'left center', src: '/projects/veyra/veyra-showcase.png', alt: 'VEYRA web sitesi: sıcak nötr zemin üzerinde güneş gözlüğü ve tipografik ürün sunumu.' },
     { id: 'nox', title: 'NOX', category: 'Web Sitesi', discipline: 'Parfüm', accent: '#9b8050', thumbnailPosition: 'left center', src: '/projects/nox/nox-showcase.png', alt: 'NOX web sitesi: koyu taşlar ve duman arasında parfüm şişesi ve marka tipografisi.' },
-    { id: 'cikolata-atolyesi', title: 'ÇİKOLATA ATÖLYESİ', category: 'Web Sitesi', discipline: 'Artizan Çikolata', accent: '#9c7a43', thumbnailPosition: 'left center', src: '/projects/cikolata-atolyesi/cikolata-atolyesi-showcase.png', alt: 'Çikolata atölyesi web sitesi: koyu kakao zemin üzerinde mermer tabakta pralinler, büyük serif başlık ve ürün vitrini.' },
   ].map(project => ({
     ...project,
     description: `${project.title} ${project.category.toLocaleLowerCase('tr-TR')} tasarımından bir görünüm.`,
